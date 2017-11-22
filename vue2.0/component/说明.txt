@@ -1,0 +1,1 @@
+组件样式采用了https://bulma.io/----------------<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">的组件样式文件

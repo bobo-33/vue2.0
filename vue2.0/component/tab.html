@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<tablist></tablist>			
+		</div>
+		<script type="text/javascript">
+			Vue.component("tablist",{
+				template:"<div class='tabs'><ul><li class='is-active' v-for='item in items'><a>{{item}}</a></li></ul></div>",
+				data(){
+					return {
+						items:["Pictures","Music","Videos","Documents"]
+					}
+				}
+			})
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>
+4000

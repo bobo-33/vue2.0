@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+		<style type="text/css">
+			.isLoading{
+				background: red;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--知识点：v-bind:元素属性
+				判断-->
+		
+		<div id="app">
+			<button v-bind:title="title" :class="{'isLoading':loading}" @click="Hover">hover me</button>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					title:"hovering",
+					loading:false
+				},
+				methods:{
+					Hover(){
+						this.loading=! this.loading
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

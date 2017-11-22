@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<list></list>
+			<list></list>
+			<list></list>
+			
+			<todolist>to do sth</todolist>
+			<todolist>to do</todolist>
+			<todolist>to</todolist>
+			
+			<counter></counter>
+		</div>
+		<script type="text/javascript">
+			Vue.component("list",{
+				template:"<li>go shopping</li>"
+			});
+			Vue.component("todolist",{
+				template:"<li><slot></slot></li>"
+			});
+			Vue.component("counter",{
+				template:"<div><li v-for='task in taskList' v-text='task'></li></div>",
+				data(){
+					return {
+						taskList:[
+							"go shoping",
+							"play basketball",
+							"dancing"
+						]
+					}
+				}
+			})
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>
+
+
+

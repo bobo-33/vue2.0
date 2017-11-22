@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="app" class="container">
+			<message title="Hello World" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit"></message>
+		</div>
+		<script type="text/javascript">
+			Vue.component("message",{
+				template:"<article class='message'><div class='message-header'>{{title}}<button class='delete' aria-label='delete' @click='Del'></button></div><div class='message-body' v-show='showing'>{{content}}</div></article>",
+				props:["title","content"],
+				data(){
+					return {
+						showing:true
+					}
+				},			
+				methods:{
+					Del(){
+						this.showing=false
+					}
+				}
+			})
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

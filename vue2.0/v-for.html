@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	</head>
+	<body>
+		<!--知识点：v-for
+				@click,methods
+				添加，删除		-->
+		<div id="app">
+			<ul>
+				<li v-for="(item,i) in items" >{{item.name}}<input type="button" value="delete" @click="Del"/></li>
+			</ul>
+			<input type="text" v-model="newItem.name" placeholder="add a new item"/><input type="button"  value="add" @click="Add"/>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					items:[
+					{id:1,name:"jessica"},
+					{id:2,name:"tom"},
+					{id:3,name:"bobo"}
+					],
+					newItem:{
+						id:null,
+						name:""
+					}
+				},
+				methods:{
+					Add(){
+						this.items.push(this.newItem);
+						this.newItem={id:null,name:""}
+					},
+					Del(){
+						this.items.splice(this.index,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	</head>
+	<body>		
+		<div id="app">
+			<card title="Component" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris." time="11:09 PM - 1 Jan 2016" :list="links" :items="footers" ></card>			
+		</div>
+		<template id="card">
+			<div class='card'>
+			  <header class='card-header'>
+			    <p class='card-header-title'>
+			      {{title}}
+			    </p>
+			    <a href='#' class='card-header-icon' aria-label='more options' @click="showing= !showing">
+			      <span class='icon'>
+			        <i class='fa fa-angle-down' aria-hidden='true'></i>
+			      </span>
+			    </a>
+			  </header>
+			  <div class='card-content' v-if="showing">
+			    <div class='content'>
+			    	{{content}}
+			      <a href='#' v-for="link in list">{{link}}</a>
+			      <br>
+			      <time>{{time}}</time>
+			    </div>
+			  </div>
+			  <footer class='card-footer'>
+			    <a href='#' class='card-footer-item' v-for="footer in items">{{footer}}</a>
+			  </footer>
+			</div>
+		</template>
+		<script type="text/javascript">
+			Vue.component("card",{
+				template:"#card",
+				props:["title","content","time","list","items"],
+				data(){
+					return {
+						showing:false
+					}
+				}
+			});
+			new Vue({
+				el:"#app",
+				data:{
+					links:["@bulmaio ","#css ","#responsive "],
+					footers:["Save","Edit","Delete"]
+				}
+			})
+		</script>
+	</body>
+</html>
