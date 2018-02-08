@@ -1,0 +1,73 @@
+@charset "utf-8";
+.wraper{margin-bottom:100px}
+.row{display: flex;flex-direction: row;justify-content: space-between;align-items: center;}
+.space{display:block;width:100%;min-height:12px;background-color:#f8f8f8;background-image:-webkit-linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%);background-image:linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%);background-size:100% 1px;background-repeat:no-repeat;background-position:top;}  
+.line{background-image: linear-gradient(#eaeaea, #eaeaea 50%, transparent 50%);background-size: 100% 1px;background-repeat: no-repeat;background-position: bottom;}
+
+.swiper-pagination-bullet-active{
+	background: #1DDC91 !important;
+}
+.index_nav{
+	line-height: 45px;
+}
+.index_nav a{
+	flex-basis: 33%;
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+}
+.index_nav a:before{
+	margin-right: 6px;
+    font-size: 20px;
+}
+.index_nav a:first-child:before{
+	color: #9ac93d;
+}
+.index_nav a:nth-child(2):before{
+	color: #ef90ba;
+}
+.index_nav a:last-child:before{
+	color: #84d0ea;
+}
+.index_nav a:first-child:after{
+	content: "声";
+}
+.index_nav a:nth-child(2):after{
+	content: "影";
+}
+.index_nav a:last-child:after{
+	content: "拍";
+}
+
+.users-list li>img{
+	width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    align-self: flex-start;
+}
+.users-list li>div{
+	flex-basis: 90%;
+    margin-left: 15px;
+}
+.users-list li>div h3{
+	font-size: 16px;
+	color: #666;
+}
+.users-list li>div>a{
+	display: block;
+	color: #000;
+}
+.img_show{
+	flex-wrap: wrap;
+    justify-content: flex-start;    
+}
+.img_show,.video_show,.audio_show{margin: 15px 0 10px 0;}
+.img_show div{
+	width: 72px;
+	height: 72px;
+	margin: 0 10px 10px 0;
+}
+.img_show div img{
+	width: 100%;
+}
+
