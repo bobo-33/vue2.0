@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--作用域插槽以template开头和结尾-->
+		<div id="app">
+			<child>
+				<template slot-scope="props">
+					<h1>{{props.item}}</h1>
+				</template>
+			</child>
+		</div>
+		<script type="text/javascript">
+			Vue.component('child',{
+				data:function(){
+					return {
+						list:[1,2,3,4]
+					}
+				},
+				template:"<ul><slot v-for='item of list' :item=item></slot></ul>"
+			})
+			
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

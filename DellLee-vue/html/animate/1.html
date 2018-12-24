@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.v-enter,.v-leave-to{
+				opacity: 0;
+			}
+			.v-enter-active,.v-leave-active{
+				transition: opacity 2s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-----入场动画钩子函数：
+			   1.before-enter
+			   2.enter
+			   3.after-enter
+			-->
+			<!-----出场动画钩子函数：
+			   1.before-leave
+			   2.leave
+			   3.after-leave
+			-->
+			
+			<transition name="fade"
+						@before-enter="handleBeforeEnter"	
+						@enter="handleEnter"
+						@after-enter="handleAfterEnter"
+			>
+				<div v-if="show">hello world</div>
+			</transition>
+			<button @click="handleClick">transition</button>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show=!this.show
+					},
+					handleBeforeEnter:function(el){
+						el.style.color="red"
+					},
+					handleEnter:function(el,done){
+						setTimeout(function(){
+							el.style.color="green"
+							
+						},2000)
+						
+						setTimeout(function(){
+							done()//手动调用done，告诉vue函数执行完
+						},4000)
+					},
+					handleAfterEnter:function(el){
+						el.style.color="#000"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

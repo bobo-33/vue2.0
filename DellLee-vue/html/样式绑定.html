@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.isActive{
+				color:red
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--1.class的对象绑定：样式与数据绑定-->
+			<!--<div :class="{isActive:actived}" @click="handleClick">hello world</div>-->
+			
+			<!--2.class数组绑定-->
+			<!--<div :class='[isActive]' @click="handleClick">hello world</div>-->
+			
+			
+			<!--2.内联样式-->
+			<!--<div :style='styleObj' @click="handleClick">hello world</div>
+			-->
+			<div :style='[styleObj,{fontSize:"20px"}]' @click="handleClick">hello world</div>
+		</div>
+		<!--1-->
+		<!--<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					actived:false
+				},
+				methods:{
+					handleClick:function(){
+						this.actived=!this.actived
+					}
+				}
+			})
+		</script>-->
+		
+		<!--2-->
+		<!--<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					isActive:""
+				},
+				methods:{
+					handleClick:function(){
+						/*if(this.isActive === 'isActive'){
+							this.isActive=''
+						}else{
+							this.isActive='isActive'
+						}*/
+
+
+						this.isActive = this.isActive==='isActive'?"":"isActive"
+					}
+				}
+				
+			})
+		</script>-->
+		
+		
+		
+		<!--3-->
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					styleObj:{
+						color:'black'
+					}
+				},
+				methods:{
+					handleClick:function(){
+						this.styleObj.color = this.styleObj.color==="black"?"red":"black"
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

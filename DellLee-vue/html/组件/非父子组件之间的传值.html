@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--解决非父子组件之间传值：
+		1.vuex
+		2.发布订阅模式（也叫Bus/总线/观察者模式）
+		-->
+		<div id="app">
+			<child content="Dell"></child>
+			<child content="Lee"></child>
+		</div>
+		<script type="text/javascript">
+			Vue.prototype.bus=new Vue();
+			Vue.component('child',{
+				data:function(){
+					return {
+						selfContent:this.content
+					}
+				},
+				props:{
+					content:String
+				},
+				template:'<div @click="handleClick">{{selfContent}}</div>',
+				methods:{
+					handleClick:function(){
+						this.bus.$emit('change',this.selfContent)
+					}
+				},
+				mounted:function(){
+					var _this=this;
+					this.bus.$on('change',function(msg){
+						_this.selfContent=msg
+					})
+				}
+			})
+			
+			
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

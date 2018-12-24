@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>		
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/volocity.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.v-ente,.v-leave-to{
+				opacity: 0;
+			}
+			.v-enter-active,.v-leave-active{
+				transition: opacity .5s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<transition mode="out-in"><!--in-out-->
+				<!--添加key避免组件复用-->
+				<!--transition可以设置mode参数实现多个元素-->
+				<div v-if="show" key="hello">hello  world</div>
+				<div v-else key="bye">Bye world</div>
+			</transition>
+			<button @click="handleClick">toggle</button>
+		</div>
+		<script type="text/javascript">
+			
+			new Vue({
+				el:"#app",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show=!this.show
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

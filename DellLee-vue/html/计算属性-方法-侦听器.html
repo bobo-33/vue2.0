@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--计算属性-->
+			<!--{{fullName}}-->
+			
+			<!--方法-->
+			<!--{{fullName()}}-->
+			
+			<!--侦听器-->
+			{{fullName}}
+		</div>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					firstName:"Dell",
+					lastName:"Lee",
+					fullName:'Dell Lee'
+				},
+				//1.计算属性
+				//计算属性内置缓存
+				//缓存机制：当依赖的计算变量没有变化，则使用依赖
+//				computed:{
+//					//是一个函数
+//					fullName:function(){
+//						return this.firstName + " " + this.lastName
+//					}
+//				}
+
+	           //2.方法
+	           //方法无缓存机制
+//				methods:{
+//					fullName:function(){
+//						return this.firstName + " " + this.lastName
+//					}
+//				}
+				
+				
+				
+				//3.侦听器
+				//侦听器有缓存机制
+				//当既可以用侦听器也可以用计算属性实现效果，选择计算属性更简洁性能好
+				watch:{
+					firstName:function(){
+						this.fullName=this.firstName + " " + this.lastName
+					},
+					lastName:function(){
+						this.fullName=this.firstName + " " + this.lastName
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

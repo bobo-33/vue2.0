@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--插槽可以有一个
+		具名插槽可以有多个，通过slot=''-->
+		<div id="app">
+			<item content='1111'>
+				<p>hello world</p>
+				
+				<p slot='header'>dell</p>
+				<p slot='footer'>lee</p>
+			</item>
+		</div>
+		<script type="text/javascript">
+			Vue.component('item',{
+				props:['content'],
+				template:'<div><slot name="header"></slot><div>{{content}}</div><slot></slot><slot name="footer"></slot></div>'
+			})
+			
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

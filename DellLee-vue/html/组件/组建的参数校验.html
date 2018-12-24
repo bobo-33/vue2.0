@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child :content='"11s"'></child>
+		</div>
+		<script type="text/javascript">
+			Vue.component("child",{
+				//1:普通
+				//props:['content'],
+				//2.校验
+				props:{
+					//content:String
+					//content:[String,Number]
+					content:{
+						type:String,
+						//必传值
+						required:true,
+						//默认值
+						default:'default value',
+						//校验字符
+						validater:function(value){
+							return (value.length>5)
+						}
+					}
+				},
+				template:"<div>{{content}}</div>"
+			})
+			new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

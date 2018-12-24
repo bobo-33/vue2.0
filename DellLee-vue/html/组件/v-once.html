@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--有效提高静态内容的展示效率-->
+		<div id="app">
+			<component :is="type"></component>
+			<button @click="change">change</button>
+		</div>
+		<script type="text/javascript">
+			Vue.component('childOne',{
+				template:'<div v-once>hello</div>'
+			})
+			Vue.component('childTwo',{
+				template:'<div v-once>world</div>'
+			})
+			new Vue({
+				el:"#app",
+				data:{
+					type:'childOne'
+				},
+				methods:{
+					change:function(){
+						this.type= this.type==='childOne'?'childTwo':'childOne'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

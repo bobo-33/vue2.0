@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="iptVal"/>
+			<button @click="handleAdd">submit</button>
+			<ul>
+				<todo-item v-for="(item,index) in list" :content='item' :key='index' :index='index' @delect='handleDel'></todo-item>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			Vue.component('todo-item',{
+				props:['content','index'],
+				template:'<li @click="del">{{content}}</li>',
+				methods:{
+					del:function(){
+						this.$emit('delect',this.index)
+					}
+				}
+			})
+			new Vue({
+				el:'#app',
+				data:{
+					iptVal:'',
+					list:[]
+				},
+				methods:{
+					handleAdd:function(){
+						this.list.push(this.iptVal);
+						this.iptVal=""
+					},
+					handleDel:function(index){
+						this.list.splice(index,1)
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

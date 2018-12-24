@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">{{msg}}</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					msg:'hello world'
+				}
+			})
+			
+			setTimeout(function(){
+				app.$data.msg='by world'//data的别名
+			},2000)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/volocity.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.v-enter,.v-leave-to{
+				opacity: 0;
+			}
+			.v-enter-active,.v-leave-active{
+				transition: opacity 2s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-----入场动画钩子函数：
+			   1.before-enter
+			   2.enter
+			   3.after-enter
+			-->
+			<!-----出场动画钩子函数：
+			   1.before-leave
+			   2.leave
+			   3.after-leave
+			-->
+			
+			<transition name="fade"
+						@before-enter="handleBeforeEnter"
+						@enter="handleEnter"
+						@after-enter="handleAfterEnter"
+			>
+				<div v-if="show">hello world</div>
+			</transition>
+			<button @click="handleClick">transition</button>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show=!this.show
+					},
+					handleBeforeEnter:function(el){
+						el.style.opacity=0
+					},
+					handleEnter:function(el,done){
+						Velocity(el,{//调用velocity动画
+							opacity:1
+						},{
+							duration:1000,
+							complete:done
+						})
+						
+					},
+					handleAfterEnter:function(el){
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
